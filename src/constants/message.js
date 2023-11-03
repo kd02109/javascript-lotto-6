@@ -1,9 +1,12 @@
+import REGEX_OBJECT from './regexp.js';
+
 const MESSAGE = Object.freeze({
   PURCHASING_MESSAGE: '구입 금액을 입력해 주세요.\n',
   WINNING_NUMBERS: '당첨 번호를 입력해 주세요.\n',
   BONUS_NUMBER: '보너스 번호를 입력해 주세요\n',
   WINNING_STATISICS: '당첨 통계\n---',
   BLANK: '',
+  COMMA: ',',
 });
 
 const MESSAGE_MATCHING = Object.freeze({
@@ -14,25 +17,17 @@ const MESSAGE_MATCHING = Object.freeze({
   makeSixMatchingFn: (number = 0) => `6개 일치 (2,000,000,000원) - ${number}개`,
 });
 
-const makeNumberOfLottoMessageFn = (number = 0) => {
-  return `${number}개를 구매했습니다.`;
-};
+const makeNumberOfLottoMessageFn = (number = 0) => `${number}개를 구매했습니다.`;
 
-const makeLottoListMessageFn = (lottos = []) => {
-  let lottosString = '';
-  lottos.forEach((item) => {
-    lottosString += `${JSON.stringify(item)}\n`;
-  });
-  return lottosString;
+const makeRateOfReturnMessageFn = (number = 0) => {
+  const numberString = String(number.toFixed(1)).replace(REGEX_OBJECT.NUMERIC_COMMA_EXPRESSION, MESSAGE.COMMA);
+  return `총 수익률은 ${numberString}%입니다.`;
 };
-
-const makeRateOfReturnMessageFn = (number = 0) => `총 수익률은 ${number}%입니다.`;
 
 const MESSAGE_OBJECT = Object.freeze({
   MESSAGE,
   MESSAGE_MATCHING,
   makeNumberOfLottoMessageFn,
-  makeLottoListMessageFn,
   makeRateOfReturnMessageFn,
 });
 
