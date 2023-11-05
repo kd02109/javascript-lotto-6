@@ -9,7 +9,7 @@ class InputView {
    */
   static async writePurchaseAmount() {
     const purchaseAmount = await Console.readLineAsync(MESSAGE.PURCHASING_MESSAGE);
-    return purchaseAmount;
+    return Number(purchaseAmount);
   }
 
   /**
