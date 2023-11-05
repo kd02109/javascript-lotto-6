@@ -14,10 +14,15 @@ class BonusValidation {
 
   /**
    * 입력된 보너스 번호가 숫자인지 확인합니다.
-   * @param {number} bonusNnumbers
+   * @param {any} bonusNnumbers
    */
   static checkNumber(bonusNnumber) {
-    if (Number.isNaN(bonusNnumber) || bonusNnumber < MIN_NUMBER || bonusNnumber > MAX_NUMBER)
+    if (
+      !Number.isInteger(bonusNnumber) ||
+      Number.isNaN(bonusNnumber) ||
+      bonusNnumber < MIN_NUMBER ||
+      bonusNnumber > MAX_NUMBER
+    )
       throw new ValidationError(BONUS_NUMBER_ERROR.NUMBER);
   }
 }
