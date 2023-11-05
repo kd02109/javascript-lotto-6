@@ -5,11 +5,14 @@ import { MAX_NUMBER, MIN_NUMBER, LOTTO_LENGTH, MULTIPLE } from '../constants/con
 class Money {
   #money;
 
+  #count;
+
   #lottoList;
 
   constructor(money) {
     this.#validate(money);
     this.#money = money;
+    this.#count = money / MULTIPLE;
     this.#setLottoList(money);
   }
 
@@ -41,6 +44,14 @@ class Money {
    */
   getMoney() {
     return this.#money;
+  }
+
+  /**
+   *
+   * @returns {number} money/MULTIPLE
+   */
+  getCount() {
+    return this.#count;
   }
 }
 
