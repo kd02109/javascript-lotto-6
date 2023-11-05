@@ -23,11 +23,11 @@ class InputView {
 
   /**
    * 보너스 번호 1개를 사용자에게 입력 받습니다.
-   * @returns {string} bonusNnumber
+   * @returns {number} bonusNnumber
    */
   static async writeBonunsNumber() {
     const bonusNnumber = await Console.readLineAsync(MESSAGE.BONUS_NUMBER);
-    return bonusNnumber;
+    return Number(bonusNnumber);
   }
 }
 

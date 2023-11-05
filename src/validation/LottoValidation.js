@@ -1,5 +1,6 @@
 import ValidationError from '../error/ValidationError.js';
 import { SELECT_NUMBER_ERROR } from '../constants/error.js';
+import { MAX_NUMBER, MIN_NUMBER, LOTTO_LENGTH } from '../constants/contant.js';
 
 class LottoValidation {
   /**
@@ -7,7 +8,7 @@ class LottoValidation {
    * @param {number[]} numbers
    */
   static checkLength(numbers) {
-    if (numbers.length !== 6) throw new ValidationError(SELECT_NUMBER_ERROR.COUNT);
+    if (numbers.length !== LOTTO_LENGTH) throw new ValidationError(SELECT_NUMBER_ERROR.COUNT);
   }
 
   /**
@@ -16,7 +17,8 @@ class LottoValidation {
    */
   static checkNumber(numbers) {
     numbers.forEach((number) => {
-      if (Number.isNaN(number) || number < 1 || number > 45) throw new ValidationError(SELECT_NUMBER_ERROR.NUMBER);
+      if (Number.isNaN(number) || number < MIN_NUMBER || number > MAX_NUMBER)
+        throw new ValidationError(SELECT_NUMBER_ERROR.NUMBER);
     });
   }
 

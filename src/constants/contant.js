@@ -1,0 +1,7 @@
+const MAX_NUMBER = 45;
+const MIN_NUMBER = 1;
+
+const LOTTO_LENGTH = 6;
+
+export const CONTANT = { MAX_NUMBER, MIN_NUMBER, LOTTO_LENGTH };
+export { MAX_NUMBER, MIN_NUMBER, LOTTO_LENGTH };
