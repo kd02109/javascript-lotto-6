@@ -7,7 +7,7 @@
 const checkMatch = (matchCount, bonusCount, match) => {
   if (matchCount === 3) match.three += 1;
   if (matchCount === 4) match.four += 1;
-  if (matchCount === 5) match.five += 1;
+  if (matchCount === 5 && bonusCount === 0) match.five += 1;
   if (matchCount === 5 && bonusCount === 1) match.fiveAndBonus += 1;
   if (matchCount === 6) match.six += 1;
 };

@@ -17,7 +17,7 @@ class Controller {
 
   async lottoStart() {
     await this.#init();
-    this.calculate(
+    this.#calculateLotto(
       this.#money.getLottoList(),
       this.#lotto.getLotto(),
       this.#bonus.getBonusNumber(),
@@ -55,7 +55,7 @@ class Controller {
    * @param {number} bonus
    * @param {{[key:string]: number}} match
    */
-  calculate(lottoList, lotto, bonus, match) {
+  #calculateLotto(lottoList, lotto, bonus, match) {
     lottoList.forEach((item) => {
       const { matchCount, bonusCount } = calculateMatch(item, lotto, bonus);
       checkMatch(matchCount, bonusCount, match);

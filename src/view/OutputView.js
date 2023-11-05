@@ -36,6 +36,7 @@ class OutputView {
     keys.forEach((key) => {
       Console.print(MESSAGE_MATCHING[key](match[key]));
     });
+    OutputView.printBlank();
   }
 
   /**
