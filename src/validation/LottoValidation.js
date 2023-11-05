@@ -1,4 +1,4 @@
-import CustomError from '../error/CustomError.js';
+import ValidationError from '../error/ValidationError.js';
 import { SELECT_NUMBER_ERROR } from '../constants/error.js';
 
 class LottoValidation {
@@ -7,7 +7,7 @@ class LottoValidation {
    * @param {number[]} numbers
    */
   static checkLength(numbers) {
-    if (numbers.length !== 6) throw new CustomError(SELECT_NUMBER_ERROR.COUNT);
+    if (numbers.length !== 6) throw new ValidationError(SELECT_NUMBER_ERROR.COUNT);
   }
 
   /**
@@ -16,7 +16,7 @@ class LottoValidation {
    */
   static checkNumber(numbers) {
     numbers.forEach((number) => {
-      if (Number.isNaN(number) || number < 1 || number > 45) throw new CustomError(SELECT_NUMBER_ERROR.NUMBER);
+      if (Number.isNaN(number) || number < 1 || number > 45) throw new ValidationError(SELECT_NUMBER_ERROR.NUMBER);
     });
   }
 
@@ -26,7 +26,7 @@ class LottoValidation {
    */
   static checkDuplicate(numbers) {
     const numberSet = new Set(numbers);
-    if (numberSet.size !== numbers.length) throw new CustomError(SELECT_NUMBER_ERROR.DUPLICATE);
+    if (numberSet.size !== numbers.length) throw new ValidationError(SELECT_NUMBER_ERROR.DUPLICATE);
   }
 }
 
