@@ -16,6 +16,7 @@ class Controller {
     await this.#init();
   }
 
+  // 입력 값에 따른 초기화 작업 진행
   async #init() {
     await this.#initMoney();
     await this.#initlotto();
