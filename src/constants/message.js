@@ -1,4 +1,4 @@
-import REGEX_OBJECT from './regexp.js';
+import { NUMERIC_COMMA_EXPRESSION } from './regexp.js';
 
 const MESSAGE = Object.freeze({
   PURCHASING_MESSAGE: '구입 금액을 입력해 주세요.\n',
@@ -20,15 +20,15 @@ const MESSAGE_MATCHING = Object.freeze({
 const makeNumberOfLottoMessageFn = (number = 0) => `${number}개를 구매했습니다.`;
 
 const makeRateOfReturnMessageFn = (number = 0) => {
-  const numberString = String(number.toFixed(1)).replace(REGEX_OBJECT.NUMERIC_COMMA_EXPRESSION, MESSAGE.COMMA);
+  const numberString = String(number.toFixed(1)).replace(NUMERIC_COMMA_EXPRESSION, MESSAGE.COMMA);
   return `총 수익률은 ${numberString}%입니다.`;
 };
 
-const MESSAGE_OBJECT = Object.freeze({
+export const MESSAGE_OBJECT = Object.freeze({
   MESSAGE,
   MESSAGE_MATCHING,
   makeNumberOfLottoMessageFn,
   makeRateOfReturnMessageFn,
 });
 
-export default MESSAGE_OBJECT;
+export { MESSAGE, MESSAGE_MATCHING, makeNumberOfLottoMessageFn, makeRateOfReturnMessageFn };
