@@ -5,10 +5,7 @@ import Lotto from '../model/Lotto.js';
 import OutputView from '../view/OutputView.js';
 import InputView from '../view/InputView.js';
 
-import calculateMatch from '../util/calculateMatch.js';
-import calculateTotal from '../util/calculateTotal.js';
-import calcultePercent from '../util/calcultePercent.js';
-import checkMatch from '../util/checkMatch.js';
+import Calculate from '../util/Calculate.js';
 
 import { MESSAGE, MESSAGE_MAKE_FN } from '../constants/message.js';
 
@@ -79,16 +76,16 @@ class Controller {
    */
   #calculateLotto(lottoList, lotto, bonus, match) {
     lottoList.forEach((item) => {
-      const { matchCount, bonusMatch } = calculateMatch(item, lotto, bonus);
-      checkMatch(matchCount, bonusMatch, match);
+      const { matchCount, bonusMatch } = Calculate.calculateMatch(item, lotto, bonus);
+      Calculate.checkMatch(matchCount, bonusMatch, match);
     });
     OutputView.printOutput(MESSAGE.WINNING_STATISICS);
     OutputView.printMatching(match);
   }
 
   #calculateRate() {
-    const total = calculateTotal(this.#money.getMatch());
-    const rate = calcultePercent(total, this.#money.getMoney());
+    const total = Calculate.calculateTotal(this.#money.getMatch());
+    const rate = Calculate.calcultePercent(total, this.#money.getMoney());
     OutputView.printOutput(MESSAGE_MAKE_FN.makeRateOfReturnMessageFn(rate));
   }
 }
