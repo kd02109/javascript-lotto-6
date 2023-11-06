@@ -4,7 +4,7 @@ class InputView {
   /**
    * message를 출력하고 입력 값을 받습니다.
    * @param {string} message
-   * @returns {string} purchaseAmount
+   * @returns {Promise<string>} purchaseAmount
    */
   static async writeInput(message) {
     const input = await Console.readLineAsync(message);

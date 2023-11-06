@@ -20,7 +20,9 @@ class Controller {
   #money;
 
   async lottoStart() {
-    await this.#init();
+    await this.#initMoney();
+    await this.#initlotto();
+    await this.#initBonus();
     this.#calculateLotto(
       this.#money.getLottoList(),
       this.#lotto.getLotto(),
@@ -30,17 +32,10 @@ class Controller {
     this.#calculateRate();
   }
 
-  // 입력 값에 따른 초기화 작업 진행
-  async #init() {
-    await this.#initMoney();
-    await this.#initlotto();
-    await this.#initBonus();
-  }
-
   async #initMoney() {
     while (true) {
+      const input = await InputView.writeInput(MESSAGE.PURCHASING_MESSAGE);
       try {
-        const input = await InputView.writeInput(MESSAGE.PURCHASING_MESSAGE);
         this.#money = new Money(input);
         OutputView.printPurchacingLotto(this.#money.getCount(), this.#money.getLottoList());
         break;
@@ -52,8 +47,8 @@ class Controller {
 
   async #initlotto() {
     while (true) {
+      const input = await InputView.writeInput(MESSAGE.WINNING_NUMBERS);
       try {
-        const input = await InputView.writeInput(MESSAGE.WINNING_NUMBERS);
         this.#lotto = new Lotto(input);
         break;
       } catch (e) {
@@ -64,8 +59,8 @@ class Controller {
 
   async #initBonus() {
     while (true) {
+      const input = await InputView.writeInput(MESSAGE.BONUS_NUMBER);
       try {
-        const input = await InputView.writeInput(MESSAGE.BONUS_NUMBER);
         this.#bonus = new BonusNumber(input, this.#lotto.getLotto());
         break;
       } catch (e) {
