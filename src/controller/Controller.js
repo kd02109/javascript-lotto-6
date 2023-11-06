@@ -37,7 +37,7 @@ class Controller {
 
   async #initMoney() {
     const input = await InputView.writePurchaseAmount();
-    this.#money = new Money(Number(input));
+    this.#money = new Money(input);
     OutputView.printPurchacingLotto(this.#money.getCount(), this.#money.getLottoList());
   }
 

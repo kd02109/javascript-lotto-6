@@ -17,17 +17,19 @@ describe('BonusNumber class 기능 테스트', () => {
   });
 
   // given
-  test.each([[[[1, 2, 3, 4, 5, 6], '0']], [[[11, 34, 23, 31, 37, 9], '46']]])(
-    '보너스번호가 1~45 사이인지 확인',
-    ([lotto, bonus]) => {
-      const error = new ValidationError(BONUS_NUMBER_ERROR.NUMBER);
+  test.each([
+    [[[1, 2, 3, 4, 5, 6], '0']],
+    [[[11, 34, 23, 31, 37, 9], '46']],
+    [[[11, 34, 23, 31, 37, 9], '#']],
+    [[[11, 34, 23, 31, 37, 9], '뮤as']],
+  ])('보너스번호가 1~45 사이인지 확인', ([lotto, bonus]) => {
+    const error = new ValidationError(BONUS_NUMBER_ERROR.NUMBER);
 
-      // when then
-      expect(() => {
-        new BonusNumber(bonus, lotto);
-      }).toThrow(error.message);
-    },
-  );
+    // when then
+    expect(() => {
+      new BonusNumber(bonus, lotto);
+    }).toThrow(error.message);
+  });
 
   test('정상 입력이 되었을 때, 보너스 번호 생성 테스트', () => {
     // given
