@@ -48,7 +48,7 @@ class Controller {
 
   async #initBonus() {
     const input = await InputView.writeBonunsNumber();
-    this.#bonus = new BonusNumber(Number(input), this.#lotto.getLotto());
+    this.#bonus = new BonusNumber(input, this.#lotto.getLotto());
   }
 
   /**
