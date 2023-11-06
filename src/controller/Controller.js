@@ -10,7 +10,7 @@ import calculateTotal from '../util/calculateTotal.js';
 import calcultePercent from '../util/calcultePercent.js';
 import checkMatch from '../util/checkMatch.js';
 
-import { MESSAGE } from '../constants/message.js';
+import { MESSAGE, MESSAGE_MAKE_FN } from '../constants/message.js';
 
 class Controller {
   #lotto;
@@ -37,10 +37,11 @@ class Controller {
       const input = await InputView.writeInput(MESSAGE.PURCHASING_MESSAGE);
       try {
         this.#money = new Money(input);
-        OutputView.printPurchacingLotto(this.#money.getCount(), this.#money.getLottoList());
+        OutputView.printOutput(MESSAGE_MAKE_FN.makeNumberOfLottoMessageFn(this.#money.getCount()));
+        OutputView.printPurchacingLotto(this.#money.getLottoList());
         break;
       } catch (e) {
-        OutputView.printError(e.message);
+        OutputView.printOutput(e.message);
       }
     }
   }
@@ -52,7 +53,7 @@ class Controller {
         this.#lotto = new Lotto(input);
         break;
       } catch (e) {
-        OutputView.printError(e.message);
+        OutputView.printOutput(e.message);
       }
     }
   }
@@ -64,7 +65,7 @@ class Controller {
         this.#bonus = new BonusNumber(input, this.#lotto.getLotto());
         break;
       } catch (e) {
-        OutputView.printError(e.message);
+        OutputView.printOutput(e.message);
       }
     }
   }
@@ -81,14 +82,14 @@ class Controller {
       const { matchCount, bonusMatch } = calculateMatch(item, lotto, bonus);
       checkMatch(matchCount, bonusMatch, match);
     });
-    OutputView.printWinningStatistics();
+    OutputView.printOutput(MESSAGE.WINNING_STATISICS);
     OutputView.printMatching(match);
   }
 
   #calculateRate() {
     const total = calculateTotal(this.#money.getMatch());
     const rate = calcultePercent(total, this.#money.getMoney());
-    OutputView.printRateOfReturn(rate);
+    OutputView.printOutput(MESSAGE_MAKE_FN.makeRateOfReturnMessageFn(rate));
   }
 }
 
