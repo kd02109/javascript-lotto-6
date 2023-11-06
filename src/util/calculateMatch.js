@@ -1,5 +1,5 @@
 /**
- *
+ * 각 복권 별 당첨 번호, 보너스 번호 일치 개수를 확인합니다.
  * @param {number[]} lottoList
  * @param {number[]} lotto
  * @param {number} bonus

@@ -3,7 +3,7 @@ import { MESSAGE_MATCHING } from '../constants/message.js';
 
 class OutputView {
   /**
-   * 로또 리스트 출력
+   * 숫자로 이루어진 로또 리스트를 문자로 전환하여 출력
    * @param {number[][]} lottos
    */
   static printPurchacingLotto(lottos) {
@@ -25,7 +25,7 @@ class OutputView {
   }
 
   /**
-   * 문자열을 Console 처리
+   * 인자로 들어온 문자열을 받아 Console.print 메서드 실행
    * @param {string} message
    */
   static printOutput(message) {

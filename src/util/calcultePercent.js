@@ -1,5 +1,5 @@
 /**
- *
+ * 수익률을 계산 해서 반환합니다.
  * @param {number} total
  * @param {number} money
  * @returns {number} rate

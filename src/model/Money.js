@@ -36,7 +36,7 @@ class Money {
   }
 
   /**
-   *
+   * 구매한 복권 리스트를 모두 반환합니다.
    * @returns {number[][]} lottoList
    */
   getLottoList() {
@@ -44,7 +44,7 @@ class Money {
   }
 
   /**
-   *
+   * 구매한 금액을 반환합니다.
    * @returns {number} money
    */
   getMoney() {
@@ -52,16 +52,16 @@ class Money {
   }
 
   /**
-   *
-   * @returns {number} money/MULTIPLE
+   *  구매한 복권 개수를 반환합니다.
+   * @returns {number} count
    */
   getCount() {
     return this.#count;
   }
 
   /**
-   *
-   * @returns {{ three: number, four: number, five: number, fiveAndBonus: number, six: number }} money/MULTIPLE
+   * 각 복권 별 당첨 내역을 계산하는 객체를 반환합니다.
+   * @returns {{ three: number, four: number, five: number, fiveAndBonus: number, six: number }} match
    */
   getMatch() {
     return this.#match;

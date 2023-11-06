@@ -1,8 +1,8 @@
 /**
  * 각 로또별 일치 여부를 확인하고 카운트
- * @param {*} matchCount
- * @param {*} bonusCount
- * @param {{ three: 0, four: 0, five: 0, fiveAndBonus: 0, six: 0 }} match
+ * @param {number} matchCount
+ * @param {number} bonusCount
+ * @param {{ three: number, four: number, five: number, fiveAndBonus: number, six: number }} match
  */
 const checkMatch = (matchCount, bonusCount, match) => {
   if (matchCount === 3) match.three += 1;
