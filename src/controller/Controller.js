@@ -31,8 +31,8 @@ class Controller {
 
   async #initMoney() {
     while (true) {
-      const input = await InputView.writeInput(MESSAGE.PURCHASING_MESSAGE);
       try {
+        const input = await InputView.writeInput(MESSAGE.PURCHASING_MESSAGE);
         this.#money = new Money(input);
         OutputView.printOutput(MESSAGE_MAKE_FN.makeNumberOfLottoMessageFn(this.#money.getCount()));
         OutputView.printPurchacingLotto(this.#money.getLottoList());
@@ -45,8 +45,8 @@ class Controller {
 
   async #initlotto() {
     while (true) {
-      const input = await InputView.writeInput(MESSAGE.WINNING_NUMBERS);
       try {
+        const input = await InputView.writeInput(MESSAGE.WINNING_NUMBERS);
         this.#lotto = new Lotto(input);
         break;
       } catch (e) {
@@ -57,8 +57,8 @@ class Controller {
 
   async #initBonus() {
     while (true) {
-      const input = await InputView.writeInput(MESSAGE.BONUS_NUMBER);
       try {
+        const input = await InputView.writeInput(MESSAGE.BONUS_NUMBER);
         this.#bonus = new BonusNumber(input, this.#lotto.getLotto());
         break;
       } catch (e) {
