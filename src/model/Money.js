@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { MAX_NUMBER, MIN_NUMBER, LOTTO_LENGTH, MULTIPLE, ZERO } from '../constants/constant.js';
+import { MAX_NUMBER, MIN_NUMBER, LOTTO_LENGTH, MULTIPLE, MATCH } from '../constants/constant.js';
 import MoneyValidation from '../validation/MoneyValidation.js';
 import makeAsendingOrder from '../util/makeAsendingOrder.js';
 
@@ -10,13 +10,14 @@ class Money {
 
   #lottoList;
 
-  #match = { three: ZERO, four: ZERO, five: ZERO, fiveAndBonus: ZERO, six: ZERO };
+  #match;
 
   constructor(money) {
     const changeTypeMoneyToNumber = Number(money);
     this.#validate(changeTypeMoneyToNumber);
     this.#money = changeTypeMoneyToNumber;
     this.#count = this.#money / MULTIPLE;
+    this.#match = { ...MATCH };
     this.#setLottoList();
   }
 

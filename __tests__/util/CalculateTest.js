@@ -1,7 +1,5 @@
 import Calculate from '../../src/util/Calculate';
-import { MATCH_NUMBER } from '../../src/constants/constant.js';
-
-const MATCH = { three: 0, four: 0, five: 0, fiveAndBonus: 0, six: 0 };
+import { MATCH_NUMBER, MATCH } from '../../src/constants/constant.js';
 
 describe('util Calculate class static 메서드 test', () => {
   // given
